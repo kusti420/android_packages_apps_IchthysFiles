@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    IchthysOS: org.ichthys.files requests no privileged-protection permissions. MANAGE_DOCUMENTS
+    is signature|role (platform key), MANAGE_EXTERNAL_STORAGE and REQUEST_INSTALL_PACKAGES are
+    signature|appop, the rest are normal/runtime. Kept (empty) so a future privileged permission
+    has to be added here consciously under ro.control_privapp_permissions=enforce.
+-->
+<permissions>
+    <privapp-permissions package="org.ichthys.files" />
+</permissions>

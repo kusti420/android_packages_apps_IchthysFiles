@@ -1,0 +1,28 @@
+// IchthysOS: Files, a Fossify File Manager fork (~/git/ichthys-files, see build.sh) that is the
+// system file manager *and* the system document picker, replacing DocumentsUI entirely:
+// OPEN_DOCUMENT / CREATE_DOCUMENT / GET_CONTENT / OPEN_DOCUMENT_TREE return
+// ExternalStorageProvider URIs. It is the only system app with an OPEN_DOCUMENT/OPENABLE */*
+// filter once DocumentsUI is gone, so it becomes the SYSTEM_DOCUMENT_MANAGER role holder.
+// Platform-signed for MANAGE_DOCUMENTS (signature|role). (kusti420/ichthysos-tracker#26)
+android_app_import {
+    name: "IchthysFiles",
+    apk: "IchthysFiles.apk",
+    certificate: "platform",
+    privileged: true,
+    system_ext_specific: true,
+    dex_preopt: {
+        enabled: true,
+    },
+    overrides: [
+        "DocumentsUI",
+        "DocumentsUIOverlay",
+    ],
+    required: ["privapp-permissions-org.ichthys.files"],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-org.ichthys.files",
+    src: "privapp-permissions-org.ichthys.files.xml",
+    sub_dir: "permissions",
+    system_ext_specific: true,
+}
